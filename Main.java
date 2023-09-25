@@ -1,9 +1,8 @@
 import java.util.Scanner;
-
-public class CalcTimurlan {
+public class Main {
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
-        System.out.print("Введите выражение: ");
+        System.out.print("Введите выражение (например 2 + 2 или II + II): ");
         String exp = scn.nextLine();
 
         try {
@@ -17,25 +16,25 @@ public class CalcTimurlan {
     }
 
     public static String calc(String input) {
-        Convert converter = new Convert();
+        Converter converter = new Converter();
         String[] actions = {"+", "-", "*", "/"};
         String[] regexActions = {"\\+", "-", "\\*", "/"};
-        String[] data = input.split(regexActions[0]);
+        String[] data = input.split(" ");
 
-        if (data.length != 2) {
-            throw new IllegalArgumentException("Некорректное выражение - должно быть два операнда");
+        if (data.length != 3) {
+            throw new IllegalArgumentException("Некорректное выражение - должно быть два операнда и один оператор");
         }
 
-        boolean isRoman = converter.isRoman(data[0]) && converter.isRoman(data[1]);
+        boolean isRoman = converter.isRoman(data[0]) && converter.isRoman(data[2]);
 
         int a, b;
         if (isRoman) {
             a = converter.romanToInt(data[0]);
-            b = converter.romanToInt(data[1]);
+            b = converter.romanToInt(data[2]);
         } else {
             try {
                 a = Integer.parseInt(data[0]);
-                b = Integer.parseInt(data[1]);
+                b = Integer.parseInt(data[2]);
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException("Некорректные числа");
             }
@@ -46,17 +45,17 @@ public class CalcTimurlan {
         }
 
         int result;
-        switch (input.charAt(data[0].length())) {
-            case '+':
+        switch (data[1]) {
+            case "+":
                 result = a + b;
                 break;
-            case '-':
+            case "-":
                 result = a - b;
                 break;
-            case '*':
+            case "*":
                 result = a * b;
                 break;
-            case '/':
+            case "/":
                 result = a / b;
                 break;
             default:
