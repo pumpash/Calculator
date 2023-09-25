@@ -1,10 +1,10 @@
 import java.util.TreeMap;
 
-public class Convert {
+public class Converter {
     TreeMap<Character, Integer> romanKeyMap = new TreeMap<>();
     TreeMap<Integer, String> arabianKeyMap = new TreeMap<>();
 
-    public Convert() {
+    public Converter() {
         romanKeyMap.put('I', 1);
         romanKeyMap.put('V', 5);
         romanKeyMap.put('X', 10);
