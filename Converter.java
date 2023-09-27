@@ -8,9 +8,7 @@ public class Converter {
         romanKeyMap.put('I', 1);
         romanKeyMap.put('V', 5);
         romanKeyMap.put('X', 10);
-        
-
-    
+      
         arabianKeyMap.put(10, "X");
         arabianKeyMap.put(9, "IX");
         arabianKeyMap.put(5, "V");
